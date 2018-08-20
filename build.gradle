@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'ca.oakey'
+version = '1.0.0-SNAPSHOT'
+
+description = """"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url "https://maven.artifactory.homedepot.com/artifactory/plugins-release"
+    }
+}
+
+dependencies {
+    compile('org.apache.commons:commons-lang3:3.2.1')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.1.RELEASE'
+    compile(group: 'org.apache.httpcomponents', name: 'httpclient', version:'4.5.5')
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.1.RELEASE'
+}
